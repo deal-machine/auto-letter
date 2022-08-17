@@ -7,3 +7,10 @@ jspm_packages
 
 # esbuild directories
 .esbuild
+
+# dynamodb local
+.dynamodb
+
+yarn.lock
+package-lock.json
+yarn.lock
