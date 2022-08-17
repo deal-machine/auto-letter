@@ -27,7 +27,7 @@ const serverlessConfiguration: AWS = {
       events: [
         {
           http: {
-            path: "hello",
+            path: "generateLetter",
             method: "post",
             cors: true,
           },

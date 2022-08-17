@@ -18,12 +18,12 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     .put({
       TableName: "users_letter",
       Item: {
-        id,
+        id, //089dea43-7758-4271-9b3b-8aeb19e9aea9
         name,
         email,
         days,
         message,
-        createdAt: new Date(),
+        createdAt: new Date().toLocaleDateString(),
       },
     })
     .promise();
