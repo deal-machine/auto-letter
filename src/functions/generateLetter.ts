@@ -1,6 +1,8 @@
 import { APIGatewayProxyHandler } from "aws-lambda";
 import { document } from "../utils/dynamodbClient";
 
+import moment from "moment";
+
 interface ICreateLetter {
   id: string;
   name: string;
@@ -14,16 +16,20 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     event.body
   ) as ICreateLetter;
 
+  const createdAt = moment().format("DD/MM/YYYY");
+  const sendAt = moment().add(days, "days").format("DD/MM/YYYY");
+
   await document
     .put({
       TableName: "users_letter",
       Item: {
-        id, //089dea43-7758-4271-9b3b-8aeb19e9aea9
+        id,
         name,
         email,
         days,
         message,
-        createdAt: new Date().toLocaleDateString(),
+        createdAt,
+        sendAt,
       },
     })
     .promise();
