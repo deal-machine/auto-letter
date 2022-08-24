@@ -1,4 +1,5 @@
 import { APIGatewayProxyHandler } from "aws-lambda";
+import { SES } from "aws-sdk";
 import { document } from "../utils/dynamodbClient";
 
 import moment from "moment";
@@ -15,6 +16,9 @@ export const handler: APIGatewayProxyHandler = async (event) => {
   const { id, name, email, days, message } = JSON.parse(
     event.body
   ) as ICreateLetter;
+
+  // lambda para criar cartas
+  // lambda para verificar diariamente se há cartas na data e enviar email
 
   const createdAt = moment().format("DD/MM/YYYY");
   const sendAt = moment().add(days, "days").format("DD/MM/YYYY");
@@ -43,6 +47,9 @@ export const handler: APIGatewayProxyHandler = async (event) => {
       },
     })
     .promise();
+
+  // const ses = new SES({ apiVersion: "2010-12-01" });
+  // await ses.sendEmail().promise();
 
   return {
     statusCode: 201,

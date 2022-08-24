@@ -16,6 +16,7 @@
   "dependencies": {
     "@middy/core": "^2.5.3",
     "@middy/http-json-body-parser": "^2.5.3",
+    "aws-sdk": "^2.1201.0",
     "moment": "^2.29.4",
     "serverless-dynamodb-local": "^0.2.40"
   },
